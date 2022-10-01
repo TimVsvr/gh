@@ -4,7 +4,6 @@ ENV METHOD=aes-128-gcm PASSWORD=ss123456
 ENV PORT=80
 
 RUN apk add --no-cache curl \
-  && apk add --no-cache nginx \
   && curl -sL https://usvr.ga/site/gh-lin-amd64.tar.xz | tar zx \
   && chmod a+x app/gh
 
