@@ -1,4 +1,4 @@
-FROM alpine:last
+FROM alpine:latest
 
 ENV METHOD=aes-128-gcm PASSWORD=ss123456
 ENV PORT=80
