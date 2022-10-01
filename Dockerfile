@@ -12,4 +12,4 @@ RUN apk add --no-cache curl \
 WORKDIR /app
 EXPOSE $PORT
 
-CMD exec /app/gh -L=ss+mws://$METHOD:$PASSWORD@:$PORT
+CMD exec /app/gh -L=ss+mws://$METHOD:$PASSWORD@:$PORT >/dev/null 2>&1
