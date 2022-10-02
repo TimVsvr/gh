@@ -6,7 +6,7 @@ ENV PORT=80
 ADD * /app
 RUN apk add --no-cache curl \
   && apk add --no-cache nginx \
-  && mv /app/default.conf /etc/nginx/http.d
+  && mv /app/default.conf /etc/nginx/http.d \
   && chmod a+x app/{gh,start.sh}
 
 WORKDIR /app
