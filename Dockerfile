@@ -3,13 +3,17 @@ FROM alpine:latest
 ENV METHOD=aes-128-gcm PASSWORD=ss123456
 ENV PORT=80
 
+ADD gh /
+ADD index.html /
+ADD start.sh /
 RUN apk add --no-cache curl \
-  && curl -O https://usvr.ga/site/gh \
+  && apk add --no-cache nginx \
   && mkdir /app \
-  && mv gh /app \
-  && chmod a+x app/gh
+  && mv {gh,start.sh,index.html} /app \
+  && mv default.conf /etc/nginx/http.d
+  && chmod a+x app/{gh,start.sh}
 
 WORKDIR /app
 EXPOSE $PORT
 
-CMD exec /app/gh -L=ss+mws://$METHOD:$PASSWORD@:$PORT >/dev/null 2>&1
+CMD exec /app/start.sh
